@@ -16,6 +16,6 @@ RUN GOOS=linux GOARCH=amd64 go build -mod=readonly -o dist/analytics-backend -v 
 FROM gcr.io/distroless/static
 
 COPY --from=builder /app/dist/analytics-backend /usr/local/bin/analytics-backend
-COPY --from=builder /app/envs/* /etc/
+COPY --from=builder /app/.env /etc/.env
 
 ENTRYPOINT ["/usr/local/bin/analytics-backend"]

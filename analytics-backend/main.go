@@ -81,12 +81,7 @@ func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU() * 2)
 	log.Printf("GOMAXPROCS %v", runtime.GOMAXPROCS(-1))
 
-	env := os.Getenv("ENV")
-	if "" == env {
-		env = "prod"
-	}
-
-	e := godotenv.Load("etc/" + env + ".env")
+	e := godotenv.Load("etc/.env")
 	if e != nil {
 		e = godotenv.Load()
 	}
